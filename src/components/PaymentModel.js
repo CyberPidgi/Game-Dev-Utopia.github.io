@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect } from "react";
@@ -31,7 +30,7 @@ const PaymentModel = ({ setIsOpen, isOpen, price }) => {
       console.error("Razorpay SDK not loaded yet");
       return;
     }
-
+  
     let options = {
       key: "rzp_test_UR1RXcKK4NZyYp",
       amount: price * 100,
@@ -43,13 +42,16 @@ const PaymentModel = ({ setIsOpen, isOpen, price }) => {
         setIsOpen(false);
         alert("Payment Successful");
       },
-      theme: { color: "#222" },
+      theme: {
+        color: "#222",
+        backdrop_color: "#222",
+      },
     };
-
+  
     let razorPay = new window.Razorpay(options);
     razorPay.open();
   };
-
+  
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -63,7 +65,7 @@ const PaymentModel = ({ setIsOpen, isOpen, price }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-50" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -77,16 +79,16 @@ const PaymentModel = ({ setIsOpen, isOpen, price }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-white"
                   >
                     Please make a payment
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Hello please click non the below button to make a payment.
+                    <p className="text-sm text-gray-300">
+                      Hello please click on the below button to make a payment.
                     </p>
                   </div>
 
@@ -103,7 +105,7 @@ const PaymentModel = ({ setIsOpen, isOpen, price }) => {
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
-                      Cancle Payment
+                      Cancel Payment
                     </button>
                   </div>
                 </Dialog.Panel>
