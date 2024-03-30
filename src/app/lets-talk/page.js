@@ -1,6 +1,12 @@
+import EventRulesNRegu from "@/utilities/EventRulesNRegu"
+
+
+
 const page = () => {
   return (
-    <div className="bg-red-200">Lets talk</div>
+    <div>
+      <EventRulesNRegu />
+    </div >
   )
 }
 
