@@ -77,21 +77,24 @@ const Gamepage = () => {
   }, [filters, Data])
 
   return (
-    <div >
-      <Filter
-        menu={menu}
-        // addToFilterList={{ addToCategoryFilterList, addToSizeFilterList, addToDimensionFilterList, addToDeviceFilterList, addToDownloadFilterList }}
-        addToFilterList={addFilters}
-        setItem={setItem}
-        // removeFromFilterList={{ removeFromCategoryFilterList, removeFromDimensionFilterList, removeFromDeviceFilterList, removeFromDownloadFilterList, removeFromSizeFilterList }} />
-        removeFromFilterList={removeFilters}
-        clearFilters={clearAllFilters}
-        filterCount={filterCount}
-      />
-      {
+    <div className=''>
+      <div className="sticky top-0 z-20 bg-black">
+        <Filter
+          menu={menu}
+          addToFilterList={addFilters}
+          setItem={setItem}
+          removeFromFilterList={removeFilters}
+          clearFilters={clearAllFilters}
+          filterCount={filterCount}
+        />
+      </div>
 
-      }
-      <div className='flex flex-wrap justify-center'><Card item={item} /></div>
+      {/* Scrollable content section */}
+      <div className="overflow-y-auto pt-16 z-10 relative">
+        <div className="flex flex-wrap justify-center gap-y-10">
+          <Card item={item} />
+        </div>
+      </div>
     </div>
   )
 }

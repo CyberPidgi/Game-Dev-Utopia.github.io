@@ -12,9 +12,9 @@ const Save = () => {
     <div className='flex justify-center items-center h-full top-0'>
       <button
         onClick={handleSaveClick}
-        className={`px-1 py-1  rounded-3xl absolute items-center mr-2 right-0 ${isSaved ? 'bg-white text-black' : 'bg-white text-white'}`}
+        className={`p-1.5  rounded-3xl absolute shadow shadow-white  items-center mr-2 right-0 bg-black }`}
       >
-        <FaBookmark className={`w-6 h-6 ${isSaved ? 'text-black' : 'text-green-600'}`} />
+        <FaBookmark className={`w-6 h-6 ${isSaved ? 'text-green-500' : 'text-white'}`} />
         {isSaved ? '' : ''}
       </button>
     </div>

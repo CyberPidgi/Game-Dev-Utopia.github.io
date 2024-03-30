@@ -66,7 +66,7 @@ const Filter = ({ addToFilterList, setItem, removeFromFilterList, filterCount, c
 
   const [selectDownloadable, setSelectDownloadable] = React.useState(false)
   return (
-    <div className='flex flex-wrap justify-center mb-10 py-2'>
+    <div className='flex flex-wrap justify-center mb-10 py-2 '>
       {
         menu.map((val, i) => (
           <div
@@ -79,9 +79,9 @@ const Filter = ({ addToFilterList, setItem, removeFromFilterList, filterCount, c
               </DropdownMenuTrigger>
 
               <DropdownMenuContent>
-                <DropdownMenuSeparator />
                 {val.values.map((value, item) => (
                   <DropdownMenuCheckboxItem
+                    onSelect={(event) => event.preventDefault()}
                     key={value.id}
                     checked={select[value.name]}
                     onCheckedChange={() => {
