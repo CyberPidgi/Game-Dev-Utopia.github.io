@@ -5,44 +5,43 @@ import Save from "../components/Save"
 
 const Card = ({ item }) => {
   return (
-    item.map((val) => (
-      <>
-        <div className='relative hover:scale-110 grid justify-items-center z-20 font-bold'>
-          <div className=' pb-2 font-bold border-solid border-2 px-3 rounded-2xl pt-1'>{val.category}
-          </div>
-          <div
-            className="relative flex-col group rounded-3xl cursor-pointer overflow-hidden  duration-500 w-64 h-[24rem] bg-zinc-800 mx-5 text-gray-50 p-5  grid justify-items-center bottom-3 z-10 border-solid border-2"
-          >
-            <div className="text-center grid justify-items-center absolute -top-4 my-0  pt-3 px-3 border-solid border-l-2 border-r-2 "></div>
-            <div className="">
+    item.map((val, i) => (
+
+      <div key={i} className='relative hover:scale-110 grid justify-items-center z-20 font-bold'>
+        <div className=' pb-2 font-bold border-solid border-2 px-3 rounded-2xl pt-1'>{val.title}
+        </div>
+        <div
+          className="relative flex-col group rounded-3xl cursor-pointer overflow-hidden  duration-500 w-64 h-[24rem] bg-zinc-800 mx-5 text-gray-50 p-5  grid justify-items-center bottom-3 z-10 border-solid border-2"
+        >
+          <div className="text-center grid justify-items-center absolute -top-4 my-0  pt-3 px-3 border-solid border-l-2 border-r-2 "></div>
+          <div className="">
+            <div
+              className=" rounded-3xl w-full h-[16rem] bg-blue-400"
+            >
+
+              <img src={val.img} className='h-full w-full rounded-3xl border-solid border-2 border-brown-800'></img>
+              <div className='left-0 absolute px-2 pb-8 ml-4 '><Like /></div>
+              <div className='right-0 absolute pb-8  px-2'><Save /></div>
+            </div>
+            <div
+              className="absolute w-full left-0 p-5 pt-2 overflow-hidden  bg-green-900 opacity-50 my-4"
+            >
               <div
-                className=" rounded-3xl w-full h-[16rem] bg-blue-400"
+                className="absolute -z-10 left-0 w-64 h-28 "
               >
 
-                <img src={val.img} className='h-full w-full rounded-3xl border-solid border-2 border-brown-800'></img>
-                <div className='left-0 absolute px-2 pb-8 ml-4 '><Like /></div>
-                <div className='right-0 absolute pb-8  px-2'><Save /></div>
               </div>
-              <div
-                className="absolute w-full left-0 p-5 pt-2 overflow-hidden  bg-green-900 opacity-50 my-4"
-              >
-                <div
-                  className="absolute -z-10 left-0 w-64 h-28 "
-                >
 
-                </div>
-
-                <span className="text-xl font-bold ">{val.category}</span>
-                <p className="w-56 duration-500 line-clamp-2">
-                  {val.desc}
-                </p>
-              </div>
+              <span className="text-xl font-bold ">{val.category}</span>
+              <p className="w-56 duration-500 line-clamp-2">
+                {val.description}
+              </p>
             </div>
           </div>
-
         </div>
 
-      </>
+      </div>
+
     ))
   )
 }

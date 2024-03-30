@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react'
 import Card from "../../components/Card"
 import Filter from "../../utilities/Filter"
 import Data from "../../utilities/Data"
+import { getRequest } from '@/api/api';
 const Gamepage = () => {
 
+  const [Data, setData] = useState([])
   const [item, setItem] = useState(Data)
   const [filterCount, setFilterCount] = useState(0);
   const menu = [...new Set(Data.map((val) => val.category))]
@@ -52,7 +54,15 @@ const Gamepage = () => {
     setFilterCount(0);
   }
 
+  async function fetchData() {
+    const response = await getRequest('/api/game/getallgames')
+    console.log(response.games)
+    setData(response.games)
+  }
 
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   useEffect(() => {
     const filteredGames = Data.filter((game) =>
@@ -64,7 +74,7 @@ const Gamepage = () => {
     )
 
     setItem(filteredGames)
-  }, [filters])
+  }, [filters, Data])
 
   return (
     <div >
